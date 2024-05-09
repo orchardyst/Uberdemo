@@ -9,7 +9,7 @@ pipeline{
     stages {
         stage('Checkout from Git'){
             steps{
-                git branch: 'main', url: 'https://github.com/orchardyst/uberdemo.git'
+                git branch: 'main', url: 'https://github.com/tkibnyusuf/uber-clone.git'
             }
         }
         stage('Terraform version'){
@@ -20,12 +20,9 @@ pipeline{
         stage('Terraform init'){           
            steps{
                 dir('EKS_Terraform') {
-                      sh 'terraform init'
-                   }
-                  {
-                    // Run Terraform init with state migration
+                      // Run Terraform init with state migration
                     sh 'terraform init -migrate-state'
-                }
+                   }
              }
         }
         stage('Terraform validate'){
