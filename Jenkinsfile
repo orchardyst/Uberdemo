@@ -22,6 +22,9 @@ pipeline{
                 dir('EKS_Terraform') {
                       sh 'terraform init'
                    }
+
+               // Run Terraform init with state migration
+                    sh 'terraform init -migrate-state'
              }
         }
         stage('Terraform validate'){
